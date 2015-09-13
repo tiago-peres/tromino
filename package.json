@@ -1,0 +1,17 @@
+{
+  "name": "trimono",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "typescript": "^1.5.3"
+  },
+  "dependencies": {
+    "react": "^0.13.3"
+  }
+}
