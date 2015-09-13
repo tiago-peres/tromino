@@ -5,13 +5,19 @@ interface TrominoProps {
     size: number;
 }
 
+interface TrominoState {
+    x: number;
+    y: number;
+    buttonDown: boolean;
+}
+
 function trominoItems(size: number, x: number, y: number) {
     var grid = new Trominos.TreeGrid(size, x, y);
     grid.fill();
     return grid.getItems();
 }
 
-let TrominoBox = React.createClass<TrominoProps, any>({
+let TrominoBox = React.createClass<TrominoProps, TrominoState>({
     getInitialState: function() {
         return {x: 0, y: 0, buttonDown: false};
     },
@@ -63,6 +69,7 @@ let TrominoBox = React.createClass<TrominoProps, any>({
     }
 });
 
-var box = React.render(
-    <TrominoBox size={32} />,
-    document.getElementById('content'));
+React.render(
+  <TrominoBox size={32} />,
+  document.getElementById('content')
+);
