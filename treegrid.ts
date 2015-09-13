@@ -1,4 +1,4 @@
-module Trimonos {
+module Trominos {
 
     function indexOfFirstTruthy(arr: any[]) {
         for (var k = 0; k < arr.length; k++) {
@@ -52,24 +52,6 @@ module Trimonos {
         }
         getItems() {
             return this.items;
-        }
-        toSVG() {
-            var strokewidth = 0.1;
-            var boxwidth = this.size + 2*strokewidth;
-            var res = '<svg viewBox="-0.1 -0.1 ' + boxwidth + ' ' + boxwidth + '" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">';
-            res += '<defs>';
-            res += '<path id="trimono0" d="M0 0L0 -1L1 -1L1 1L-1 1L-1 0Z" />';
-            res += '<path id="trimono1" d="M0 0L1 0L1 1L-1 1L-1 -1L0 -1Z" />';
-            res += '<path id="trimono2" d="M0 0L0 1L-1 1L-1 -1L1 -1L1 0Z" />';
-            res += '<path id="trimono3" d="M0 0L-1 0L-1 -1L1 -1L1 1L0 1Z" />';
-            res += '</defs>';
-            res += '<g stroke="#000" stroke-width="' + strokewidth + '" fill="#bbb">';
-            this.items.forEach((item) => {
-                res += '<use x="' + item[0] + '" y="' + item[1] + '" xlink:href="#trimono' + item[2] + '" />';
-            });
-            res += '</g>';
-            res += '</svg>';
-            return res;
         }
     }
 }
