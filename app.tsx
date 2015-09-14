@@ -46,6 +46,7 @@ let TrominoBox = React.createClass<TrominoProps, TrominoState>({
             boxwidth = this.props.size + 2 * strokeWidth,
             viewBox = [-strokeWidth, -strokeWidth, boxwidth, boxwidth].join(' '),
             items = trominoItems(this.props.size, this.state.x, this.state.y);
+        // #47a447
         return (
             <svg viewBox={viewBox} onMouseDown={this.handleMouseButtons}
              onMouseUp={this.handleMouseButtons}
@@ -56,7 +57,7 @@ let TrominoBox = React.createClass<TrominoProps, TrominoState>({
                     <path id="tromino2" d="M0 0L0 1L-1 1L-1 -1L1 -1L1 0Z" />
                     <path id="tromino3" d="M0 0L-1 0L-1 -1L1 -1L1 1L0 1Z" />
                 </defs>
-                <g stroke="#000" strokeWidth={strokeWidth} fill="#bbb">
+                <g stroke="#000" strokeWidth={strokeWidth} fill="#81D4FA">
                     {items.map((item, idx) => React.createElement("use", {
                         x: item[0],
                         y: item[1],
