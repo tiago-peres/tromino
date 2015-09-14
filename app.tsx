@@ -1,15 +1,23 @@
 /// <reference path="typings/react/react-global.d.ts" />
 
+declare namespace JSX {
+  interface IntrinsicElements {
+    use: React.SVGAttributes;
+  }
+}
+
 module Trominos {
 
   interface TrominoProps {
-      size: number;
+    initX: number;
+    initY: number;
+    size: number;
   }
 
   interface TrominoState {
-      x: number;
-      y: number;
-      buttonDown: boolean;
+    x: number;
+    y: number;
+    buttonDown: boolean;
   }
 
   function indexOfFirstTruthy(arr: any[]) {
@@ -63,10 +71,10 @@ module Trominos {
 
   let TrominoBox = React.createClass<TrominoProps, TrominoState>({
       getInitialState: function() {
-          return {x: 0, y: 0, buttonDown: false};
+          return {x: this.props.initX, y: this.props.initY, buttonDown: false};
       },
       shouldComponentUpdate: function(nextProps, nextState) {
-          return nextState.buttonDown && (nextState.x !== this.state.x || nextState.y !== this.state.y);
+          return nextState.x !== this.state.x || nextState.y !== this.state.y;
       },
       checkMouse: function(e) {
           let svg = this.getDOMNode(),
@@ -102,21 +110,20 @@ module Trominos {
                       <path id="tromino3" d="M0 0L-1 0L-1 -1L1 -1L1 1L0 1Z" />
                   </defs>
                   <g stroke="#000" strokeWidth={strokeWidth} fill="#81D4FA">
-                      {items.map((item, idx) => React.createElement("use", {
-                          x: item[0],
-                          y: item[1],
-                          xlinkHref: "#tromino" + item[2],
-                          key: idx
-                      }))}
+                      {items.map((item, idx) =>
+                        <use x={item[0]} y={item[1]}
+                          xlinkHref={"#tromino" + item[2]} key={idx} />
+                      )}
                   </g>
               </svg>
           );
       }
   });
 
-  React.render(
-    <TrominoBox size={32} />,
-    document.getElementById('content')
-  );
+  let element = <TrominoBox size={32} initX={7} initY={5} />;
+
+  console.log(React.renderToStaticMarkup(element));
+
+  React.render(element, document.getElementById('content'));
 
 }
