@@ -8,10 +8,9 @@
   },
   "author": "",
   "license": "ISC",
-  "devDependencies": {
-    "typescript": "^1.6.0-beta"
-  },
+  "devDependencies": {},
   "dependencies": {
-    "react": "^0.14.0-rc1"
+    "react": "^0.14.0",
+    "react-dom": "^0.14.0"
   }
 }
