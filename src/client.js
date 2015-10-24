@@ -1,4 +1,4 @@
-import make_element from './app';
+import make_element from './trominobox';
 
 (function (document, React, ReactDOM) {
 
