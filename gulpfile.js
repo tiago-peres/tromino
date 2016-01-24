@@ -1,5 +1,6 @@
 var gulp = require('gulp');
 var babel = require('gulp-babel');
+var uglify = require('gulp-uglify');
 var del = require('del');
 var browserify = require('browserify');
 var buffer = require('vinyl-buffer');
@@ -19,7 +20,7 @@ gulp.task('clean', function () {
 gulp.task('app', ['scripts'], function () {
     var b = browserify({
         entries: './dist/client.js',
-        debug: true
+        debug: !gulp.env.production
     });
 
     return b.bundle()
@@ -27,7 +28,7 @@ gulp.task('app', ['scripts'], function () {
         .pipe(buffer())
         .pipe(sourcemaps.init({loadMaps: true}))
             // Add transformation tasks to the pipeline here.
-            //.pipe(uglify())
+        .pipe(uglify())
             //.on('error', gutil.log)
         .pipe(sourcemaps.write('.'))
         .pipe(gulp.dest('.'));

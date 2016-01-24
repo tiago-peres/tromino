@@ -1,9 +1,7 @@
 import make_element from './trominobox';
+import React from 'react';
+import ReactDOM from 'react-dom';
 
-(function (document, React, ReactDOM) {
+const element = make_element(React, ReactDOM);
 
-    let element = make_element(React, ReactDOM);
-
-    ReactDOM.render(element, document.getElementById('content'));
-
-})(document, React, ReactDOM);
+ReactDOM.render(element, document.getElementById('tromino-fig'));
