@@ -20,10 +20,10 @@ gulp.task('app', ['scripts'], function () {
     var b = browserify({
         entries: './dist/client.js',
         debug: true
-      });
+    });
 
-      return b.bundle()
-        .pipe(source('./dist/app.js'))
+    return b.bundle()
+        .pipe(source('./dist/app.js'))  // output file name
         .pipe(buffer())
         .pipe(sourcemaps.init({loadMaps: true}))
             // Add transformation tasks to the pipeline here.
@@ -33,4 +33,4 @@ gulp.task('app', ['scripts'], function () {
         .pipe(gulp.dest('.'));
 });
 
-gulp.task('default', ['scripts']);
+gulp.task('default', ['app']);
